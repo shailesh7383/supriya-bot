@@ -2,8 +2,8 @@ from telegram import Update
 from telegram.ext import ApplicationBuilder, MessageHandler, ContextTypes, filters
 import random
 
-BOT_TOKEN = "PASTE_YOUR_BOT_TOKEN_HERE"
-YOUR_ID = 5835299457
+BOT_TOKEN = "7687020056:AAGjP8-eyyo8vrN7_xGnGX59c7dw55Aos2g"  # ← yaha apna token daalna
+YOUR_ID = 5835299457  # ← yaha apna Telegram ID daalna
 
 def reply_text(user_message):
     msg = user_message.lower()
@@ -36,7 +36,8 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     response = reply_text(user_text)
     await update.message.reply_text(response)
 
-def main():
+async def main():
     app = ApplicationBuilder().token(BOT_TOKEN).build()
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
-    app.run_polling()
+    await app.run_polling()
+
